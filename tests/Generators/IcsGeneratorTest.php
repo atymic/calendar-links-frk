@@ -55,6 +55,14 @@ class IcsGeneratorTest extends TestCase
     }
 
     /** @test */
+    public function it_can_generate_a_file(): void
+    {
+        $this->assertMatchesSnapshot(
+            $this->generator([Ics::OPTION_AS_FILE => true])->generate($this->createShortEventLink())
+        );
+    }
+
+    /** @test */
     public function it_correctly_generates_all_day_events_by_days(): void
     {
         $this->assertMatchesSnapshot(
